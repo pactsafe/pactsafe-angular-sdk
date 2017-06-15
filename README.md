@@ -2,23 +2,23 @@
 Angular SDK for easy Clickwrap/Browsewrap implementation leveraging PactSafe's JavaScript Library
 
 ## Features
-- Automatically loads the PactSafe Snippet into your app so all you have to do is call _ps to use the PactSafe Library
+- Automatically loads the PactSafe Snippet into your app so all you have to do is call `_ps` to use the PactSafe Library
 
 #### PSClickWrap Component:
 - Renders a PactSafe ClickWrap group by providing a site `accessId` and a `groupKey`
 - Have more control on what contracts you show by using a `filter` to specify contract ID's and/or tags
 - Render a completely dynamic ClickWrap by passing in costom `render_data`
 - Override default properties set within PactSafe's App configuration:
--- ClickWrap Style using `clickWrapStyle` (only when using `filter` as well)
--- Signer ID selector using `signerIdSelector`
--- and more! (See more detailed documentation on available PSClickWrap configurations here)
+  - ClickWrap Style using `clickWrapStyle` (only when using `filter` as well)
+  - Signer ID selector using `signerIdSelector`
+  - and more! (See more detailed documentation on available PSClickWrap configurations here)
 
 #### PSBrowseWrap Component:
 - Renders a PactSafe BrowseWrap grou by providing a site `accessId` and `groupKey`
 - Override default properties set within PactSafe's App configuration:
--- Position with `position`
--- Visability with `alwaysVisible`
--- and more! (See more detailed documentation on available PSBrowseWrap configurations here)
+  - Position with `position`
+  - Visability with `alwaysVisible`
+  - and more! (See more detailed documentation on available PSBrowseWrap configurations here)
 
 ## Demo & Example
 
@@ -147,9 +147,9 @@ Pass in any additional options using inputs on the `ps-browse-wrap` component as
 }
 ```
 
-- Both the components load in the ps library giving you access to the _ps global. With that, you can add more advance functionality (checking whether all contracts have been accepted, sending data only on form submit, etc.)
--- _ps is defined as a global in the window, so you can access it from any of your angular components
--- If you are having trouble with the linter using _ps, include `declare var _ps: any;` at the top of the file you are trying to use it in. This just tells the linter that _ps exists.
+- Both the components load in the ps library giving you access to the `_ps` global. With that, you can add more advance functionality (checking whether all contracts have been accepted, sending data only on form submit, etc.)
+  - `_ps` is defined as a global in the window, so you can access it from any of your angular components
+  - If you are having trouble with the linter using `_ps`, include `declare var _ps: any;` at the top of the file you are trying to use it in. This just tells the linter that `_ps` exists.
 
 ## License
 Copyright (c) 2017 PactSafe.
