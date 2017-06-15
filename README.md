@@ -28,7 +28,21 @@ Angular SDK for easy Clickwrap/Browsewrap implementation leveraging PactSafe's J
 #### PSBrowseWrap Component:
 ![PSBrowseWrap](img/PSBrowseWrap.gif "PSBrowseWrap")
 
-Hosted live demo soon.
+#### Example
+Included in the project is an example folder. To run the example, navigate to the root of the example folder, then:
+```
+npm install http-server -g
+http-server
+```
+Open a browser and go to localhost:8081 and the example app should be running and you can see the components in action.
+
+If the app is having permission issues when trying to run, try running the server as an https server as follows:
+```
+// Create self-signed SSL
+openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
+// Run SSL Server
+http-server -S -C cert.pem -o
+```
 
 ## Installation
 The easiest way to use pactsafe-angular-sdk is to install it using NPM and include it in your own Angular 2+ build process
@@ -129,7 +143,7 @@ Pass in any additional options using inputs on the `ps-browse-wrap` component as
 | `position`			 | string.oneOf[`'middle'`, `'left'`, `'right'`, `'auto'`]		      | auto									| Yes								   	   | Position of where the BrowseWrap badge will float within the browser window																																																											  |
 
 ## Notes
-- **You must run your web app over HTTPS** in order to interact with the PactSafe response API (that powers both the PSClickWrap and PSBrowseWrap components)!
+- **You must run your web app over HTTPS** in order to interact with the PactSafe Activity API (that powers both the PSClickWrap and PSBrowseWrap components)!
 
 - If you are developing in an AngularCli generated project, you may run into trouble using the library. Make sure you set up a path mapping in /src/tsconfig.app.json of your consuming application (not the library) and that should solve any compilation problems you may have:
 
