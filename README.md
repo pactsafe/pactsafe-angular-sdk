@@ -47,14 +47,14 @@ PSClickWrap Component:
 // app.module.ts
 
 import { PSModule } from 'pactsafe-angular-sdk'
-...
+// ...
 @NgModule({
-  ...
+  // ...
   imports: [
     PSModule.forRoot(),
     // Other imports
   ],
-  ...
+  // ...
 })
 ```
 With the PSModule properly imported, you should be able to use the PSClickWrap component throughout your project.
@@ -101,7 +101,7 @@ Pass in any additional options using inputs on the `ps-browse-wrap` component as
 |          Input        |                                Type                                	      |                 Default                |                 Required?                |                                                                                                                                                        Description                                                                                                                                                       |
 |:--------------------:|:----------------------------------------------------------------------------:|:--------------------------------------:|:----------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | `accessId`           | string                                                                       | null                                   | Yes                                      | PactSafe site access ID                                                                                                                                                                                                                                                                                                  |
-| `clickWrapStyle`     | string.oneOf[`'full'`, `'scroll'`, `'checkbox'`, `'combined'`, `'embedded'`] | Value specified in PactSafe Group's UI | No                                       | Override the clickwrap style specified in the PactSafe Group Interface                                                                                                                                                                                                                                                   |
+| `clickWrapStyle`     | string.oneOf[`'full'`, `'scroll'`, `'checkbox'`, `'combined'`, `'embedded'`] | Value specified in PactSafe Group's UI | No                                       | Override the clickwrap style specified in the PactSafe Group Interface (only works if using `filter` instead of `groupKey`)                                                                                                                                                                                                                                           |
 | `confirmationEmail`  | bool                                                               		  | Value specified in PactSafe Group's UI | No                                       | Override whether to send a confirmation email to the signer upon contract acceptance                                                                                                                                                                                                                                     |
 | `containerName`      | string                                                             		  | ps-clickwrap                           | Yes                                      | The div ID that will contain your clickwrap. You should override this if you plan on displaying more than one contract on a page.                                                                                                                                                                                        |
 | `disableSending`     | bool                                                               		  | false                                  | No                                       | Turn this on if you want to manually send the agreed event instead of it automatically being sent on contract acceptance. [See documentation on manually sending the agreed event here.](https://pactsafe.gelato.io/guides/get-to-know-our-javascript-library#3-sending-agreed-in-javascript)                            |
@@ -146,6 +146,10 @@ Pass in any additional options using inputs on the `ps-browse-wrap` component as
   }
 }
 ```
+
+- Both the components load in the ps library giving you access to the _ps global. With that, you can add more advance functionality (checking whether all contracts have been accepted, sending data only on form submit, etc.)
+-- _ps is defined as a global in the window, so you can access it from any of your angular components
+-- If you are having trouble with the linter using _ps, include `declare var _ps: any;` at the top of the file you are trying to use it in. This just tells the linter that _ps exists.
 
 ## License
 Copyright (c) 2017 PactSafe.

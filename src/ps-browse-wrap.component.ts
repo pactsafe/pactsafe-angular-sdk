@@ -54,7 +54,7 @@ export class PSBrowseWrapComponent implements OnInit, OnDestroy, AfterViewInit {
         a.async = 1;
         a.src = c;
         b.parentNode.insertBefore(a, b);
-      })(window, document, 'script', 'https://127.0.0.1:8080/ps.js', '_ps');
+      })(window, document, 'script', '//vault.pactsafe.io/ps.min.js', '_ps');
     }
   }
 

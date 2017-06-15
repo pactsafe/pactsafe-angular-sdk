@@ -22,14 +22,14 @@ export class PSClickWrapComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() signerIdSelector: string = null;
 
   // OVERWRITE INPUTS/CAN BE PULLED FROM PS
-  @Input() clickWrapStyle: string = 'scroll';
-  @Input() containerName: string = 'default-clickwrap';
+  @Input() clickWrapStyle: string = 'full';
+  @Input() containerName: string = 'ps-clickwrap';
   @Input() displayImmediately: boolean = true;
   @Input() displayAll: boolean = true;
   @Input() forceScroll: boolean = false;
   @Input() confirmationEmail: boolean = false;
   @Input() disableSending: boolean = false;
-  @Input() testMode: boolean = true;
+  @Input() testMode: boolean = false;
 
   // CONDITIONAL INPUTS
   @Input() groupKey: string = null;
@@ -60,7 +60,7 @@ export class PSClickWrapComponent implements OnInit, OnDestroy, AfterViewInit {
         a.async = 1;
         a.src = c;
         b.parentNode.insertBefore(a, b);
-      })(window, document, 'script', 'https://127.0.0.1:8080/ps.js', '_ps');
+      })(window, document, 'script', '//vault.pactsafe.io/ps.min.js', '_ps');
     }
   }
 
