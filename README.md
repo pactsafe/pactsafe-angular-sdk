@@ -23,17 +23,17 @@ Angular SDK for easy Clickwrap/Browsewrap implementation leveraging PactSafe's J
 ## Demo & Example
 
 #### PSClickWrap Component:
-`Insert demo here`
+![PSClickWrap](img/PSClickWrap.gif "PSClickWrap")
 
 #### PSBrowseWrap Component:
-`Insert demo here`
+![PSBrowseWrap](img/PSBrowseWrap.gif "PSBrowseWrap")
 
-Live demo?
+Hosted live demo soon.
 
 ## Installation
 The easiest way to use pactsafe-angular-sdk is to install it using NPM and include it in your own Angular 2+ build process
 
-```
+```bash
 npm install pactsafe-angular-sdk --save
 ```
 
@@ -61,7 +61,7 @@ With the PSModule properly imported, you should be able to use the PSClickWrap c
 The ClickWrap requires you to specify an `accessId`, one of ( `groupKey` or `filter` ), and a `signerIdSelector` that corresponds to an input element. This input will identify the signer (usually an email field), so when the user accepts your terms, the info can be successfully sent to PactSafe.
 
 ``` html
-// sample.component.html
+<!-- sample.component.html -->
 
 <input type="email" id="userEmail" placeholder="Your Email"/>
 
@@ -81,7 +81,7 @@ With the PSModule properly imported, you should be able to use the PSBrowseWrap 
 The BrowseWrap requires you to specify an `accessId`, `groupKey`, and a `linkText`.
 
 ``` html
-// sample.component.html
+<!-- sample.component.html -->
 
 <ps-browse-wrap accessId={YOUR_PACTSAFE_ACCESS_ID_HERE} groupKey={YOUR_GROUP_KEY_HERE} linkText={YOUR_LINK_TEXT_HERE}></ps-browse-wrap>
 ```
@@ -129,10 +129,23 @@ Pass in any additional options using inputs on the `ps-browse-wrap` component as
 | `position`			 | string.oneOf[`'middle'`, `'left'`, `'right'`, `'auto'`]		      | auto									| Yes								   	   | Position of where the BrowseWrap badge will float within the browser window																																																											  |
 
 ## Notes
-**You must run your web app over HTTPS** in order to interact with the PactSafe response API (that powers both the PSClickWrap and PSBrowseWrap components)!
+- **You must run your web app over HTTPS** in order to interact with the PactSafe response API (that powers both the PSClickWrap and PSBrowseWrap components)!
 
-## Development (modifying existing code to fit your needs)
-`Insert useful info about developing if the user wants to modify given code`
+- If you are developing in an AngularCli generated project, you may run into trouble using the library. Make sure you set up a path mapping in /src/tsconfig.app.json of your consuming application (not the library) and that should solve any compilation problems you may have:
+
+```js
+{
+  "compilerOptions": {
+    // ...
+    // Note: these paths are relative to 'baseUrl' path.
+    "paths": {
+      "@angular/*": [
+        "../node_modules/@angular/*"
+      ]
+    }
+  }
+}
+```
 
 ## License
 Copyright (c) 2017 PactSafe.
