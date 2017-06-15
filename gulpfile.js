@@ -13,6 +13,7 @@ const srcFolder = path.join(rootFolder, 'src');
 const tmpFolder = path.join(rootFolder, '.tmp');
 const buildFolder = path.join(rootFolder, 'build');
 const distFolder = path.join(rootFolder, 'dist');
+const exampleFolder = path.join(rootFolder, 'example');
 
 /**
  * 1. Delete /dist folder
@@ -183,6 +184,14 @@ gulp.task('clean:build', function () {
   return deleteFolders([buildFolder]);
 });
 
+/**
+ * 12. Copy /example to /dist
+ */
+gulp.task('copy:example', function () {
+    return gulp.src([`${exampleFolder}/**/*`])
+        .pipe(gulp.dest(`${distFolder}/example`));
+});
+
 gulp.task('compile', function () {
   runSequence(
     'clean:dist',
@@ -196,6 +205,7 @@ gulp.task('compile', function () {
     'copy:readme',
     'clean:build',
     'clean:tmp',
+    'copy:example',
     function (err) {
       if (err) {
         console.log('ERROR:', err.message);
