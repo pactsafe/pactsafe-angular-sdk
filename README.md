@@ -11,14 +11,14 @@ Angular SDK for easy Clickwrap/Browsewrap implementation leveraging PactSafe's J
 - Override default properties set within PactSafe's App configuration:
   - ClickWrap Style using `clickWrapStyle` (only when using `filter` as well)
   - Signer ID selector using `signerIdSelector`
-  - and more! (See more detailed documentation on available PSClickWrap configurations here)
+  - and more! (See more detailed documentation on available PSClickWrap configurations below)
 
 #### PSBrowseWrap Component:
 - Renders a PactSafe BrowseWrap grou by providing a site `accessId` and `groupKey`
 - Override default properties set within PactSafe's App configuration:
   - Position with `position`
   - Visability with `alwaysVisible`
-  - and more! (See more detailed documentation on available PSBrowseWrap configurations here)
+  - and more! (See more detailed documentation on available PSBrowseWrap configurations below)
 
 ## Demo & Example
 
@@ -45,11 +45,18 @@ http-server -S -C cert.pem -o
 ```
 
 ## Installation
-The easiest way to use pactsafe-angular-sdk is to install it using NPM and include it in your own Angular 2+ build process
+The easiest way to use pactsafe-angular-sdk is to install it using NPM and include it in your own Angular 2+ build process.
+The module provides you with the transpiled code and an example project using the sdk.
 
 ```bash
 npm install pactsafe-angular-sdk --save
 ```
+
+Alternatively, for more flexability, you can clone the repository, allowing you to modify the source code easier, and then use gulp (already preconfigured) to build your src.
+- Clone
+- Modify src how you want
+- `gulp build`
+- Use dist in your project as you would with the npm module
 
 ## Usage
 
