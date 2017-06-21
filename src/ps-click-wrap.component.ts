@@ -19,7 +19,6 @@ import {Component, OnInit, Input, OnDestroy, AfterViewInit} from '@angular/core'
 export class PSClickWrapComponent implements OnInit, OnDestroy, AfterViewInit {
   // ABSOLUTELY REQUIRED
   @Input() accessId: string = null;
-  @Input() signerIdSelector: string = null;
 
   // OVERWRITE INPUTS/CAN BE PULLED FROM PS
   @Input() clickWrapStyle: string = 'full';
@@ -37,6 +36,9 @@ export class PSClickWrapComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @Input() dynamic: boolean = false;
   @Input() renderData: object = null;
+
+  @Input() signerIdSelector: string = null;
+  @Input() signerId: string = null;
 
   createOptions = {};
   loadOptions = {};
@@ -68,8 +70,6 @@ export class PSClickWrapComponent implements OnInit, OnDestroy, AfterViewInit {
     // Make sure required input has been provided
     if (this.accessId == null) {
       throw new Error('Attribute "accessId" is required');
-    } else if (this.signerIdSelector == null) {
-      throw new Error('Attribute "signerIdSelector" is required');
     }
 
     // Validation and assignment for conditional input
@@ -96,6 +96,17 @@ export class PSClickWrapComponent implements OnInit, OnDestroy, AfterViewInit {
       throw new Error('If "dynamic" attribute is set, then "renderData" is required');
     }
 
+    // IF SIGNERIDSELECTOR -> NO SIGNERID : IF SIGNER ID -> NO SIGNERIDSELECTOR
+    if ((this.signerIdSelector == null && this.signerId == null) || (this.signerIdSelector != null && this.signerId != null)) {
+      throw new Error('Either "signerIdSelector" or "signerId" is required in clickwrap attributes');
+    } else {
+      if (this.signerIdSelector == null) {
+        this.createOptions['signer_id'] = this.signerId;
+      } else {
+        this.loadOptions['signer_id_selector'] = this.signerIdSelector;
+      }
+    }
+
     // Set up the ClickWrap options based on input
     Object.assign(this.createOptions, {
       testMode: this.testMode,
@@ -104,7 +115,6 @@ export class PSClickWrapComponent implements OnInit, OnDestroy, AfterViewInit {
     });
     Object.assign(this.loadOptions, {
       container_selector: this.containerName,
-      signer_id_selector: this.signerIdSelector,
       style: this.clickWrapStyle,
       display_all: this.displayAll,
       render_data: this.renderData,
