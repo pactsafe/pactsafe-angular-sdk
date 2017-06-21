@@ -172,21 +172,7 @@ gulp.task('copy:readme', function () {
 });
 
 /**
- * 10. Delete /.tmp folder
- */
-gulp.task('clean:tmp', function () {
-  return deleteFolders([tmpFolder]);
-});
-
-/**
- * 11. Delete /build folder
- */
-gulp.task('clean:build', function () {
-  return deleteFolders([buildFolder]);
-});
-
-/**
- * 12. Copy /example to /dist
+ * 10. Copy /example to /dist
  */
 gulp.task('copy:example', function () {
     return gulp.src([`${exampleFolder}/**/*`])
@@ -194,11 +180,25 @@ gulp.task('copy:example', function () {
 });
 
 /**
- * 13. Copy /img to /dist
+ * 11. Copy /img to /dist
  */
 gulp.task('copy:img', function () {
     return gulp.src([`${imgFolder}/**/*`])
         .pipe(gulp.dest(`${distFolder}/img`));
+});
+
+/**
+ * 12. Delete /.tmp folder
+ */
+gulp.task('clean:tmp', function () {
+  return deleteFolders([tmpFolder]);
+});
+
+/**
+ * 13. Delete /build folder
+ */
+gulp.task('clean:build', function () {
+  return deleteFolders([buildFolder]);
 });
 
 gulp.task('compile', function () {
@@ -212,10 +212,10 @@ gulp.task('compile', function () {
     'copy:build',
     'copy:manifest',
     'copy:readme',
-    'clean:build',
-    'clean:tmp',
     'copy:example',
     'copy:img',
+    'clean:build',
+    'clean:tmp',
     function (err) {
       if (err) {
         console.log('ERROR:', err.message);
