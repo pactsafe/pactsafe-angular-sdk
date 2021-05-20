@@ -10,7 +10,8 @@
     "docs:serve": "npm run docs:build -- -s",
     "docs:watch": "npm run docs:build -- -s -w",
     "lint": "tslint --type-check --project tsconfig.json src/**/*.ts",
-    "test": "tsc && karma start"
+    "test": "tsc && karma start",
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --async"
   },
   "resolutions": {
     "graceful-fs": "^4.2.4"
