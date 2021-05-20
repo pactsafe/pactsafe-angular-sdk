@@ -20,7 +20,7 @@ export * from './ps-browse-wrap.component';
   ]
 })
 export class PSModule {
-  static forRoot(): ModuleWithProviders<PSModule> {
+  static forRoot(): ModuleWithProviders {
     return {
       ngModule: PSModule,
       providers: []
