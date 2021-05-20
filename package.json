@@ -2,6 +2,7 @@
   "name": "pactsafe-angular-sdk",
   "version": "0.1.0",
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "build": "gulp build",
     "build:watch": "gulp",
     "docs": "npm run docs:build",
@@ -10,6 +11,9 @@
     "docs:watch": "npm run docs:build -- -s -w",
     "lint": "tslint --type-check --project tsconfig.json src/**/*.ts",
     "test": "tsc && karma start"
+  },
+  "resolutions": {
+    "graceful-fs": "^4.2.4"
   },
   "repository": {
     "type": "git",
@@ -27,13 +31,13 @@
     "url": "https://github.com/pactsafe/pactsafe-angular-sdk/issues"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.803.29",
-    "@angular/common": "^8.2.14",
-    "@angular/compiler": "^8.2.14",
-    "@angular/compiler-cli": "^8.2.14",
-    "@angular/core": "^8.2.14",
-    "@angular/platform-browser": "^8.2.14",
-    "@angular/platform-browser-dynamic": "^8.2.14",
+    "@angular-devkit/build-angular": "~0.901.15",
+    "@angular/common": "^9.1.13",
+    "@angular/compiler": "^9.1.13",
+    "@angular/compiler-cli": "^9.1.13",
+    "@angular/core": "^9.1.13",
+    "@angular/platform-browser": "^9.1.13",
+    "@angular/platform-browser-dynamic": "^9.1.13",
     "@compodoc/compodoc": "^1.0.0-beta.7",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
@@ -60,14 +64,14 @@
     "rxjs": "^6.6.7",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
-    "typescript": "~3.5.3",
-    "zone.js": "~0.9.1"
+    "typescript": "~3.8.3",
+    "zone.js": "~0.10.3"
   },
   "engines": {
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "@angular/cli": "^8.3.29",
+    "@angular/cli": "^9.1.15",
     "rxjs-compat": "^6.0.0-rc.0",
     "tslib": "^1.9.0"
   }
