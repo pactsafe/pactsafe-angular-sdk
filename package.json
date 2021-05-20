@@ -73,7 +73,7 @@
   },
   "dependencies": {
     "@angular/cli": "^9.1.15",
-    "rxjs-compat": "^6.0.0-rc.0",
+    "rxjs-compat": "^6.6.7",
     "tslib": "^1.9.0"
   }
 }
