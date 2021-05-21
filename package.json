@@ -1,6 +1,6 @@
 {
-  "name": "pactsafe-angular-sdk",
-  "version": "0.1.0",
+  "name": "@pactsafe/pactsafe-angular-sdk",
+  "version": "0.1.2",
   "scripts": {
     "build": "gulp build",
     "build:watch": "gulp",
@@ -17,7 +17,7 @@
   },
   "author": {
     "name": "Justin Willoughby",
-    "email": "willoughby0114@gmail.com"
+    "email": "engineering@pactsafe.com"
   },
   "keywords": [
     "angular"

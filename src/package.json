@@ -1,5 +1,5 @@
 {
-  "name": "pactsafe-angular-sdk",
+  "name": "@pactsafe/pactsafe-angular-sdk",
   "version": "0.1.2",
   "repository": {
     "type": "git",
@@ -7,7 +7,7 @@
   },
   "author": {
     "name": "Justin Willoughby",
-    "email": "willoughby0114@gmail.com"
+    "email": "engineering@pactsafe.com"
   },
   "keywords": [
     "pactsafe",
