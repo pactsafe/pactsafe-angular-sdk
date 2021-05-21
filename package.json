@@ -2,6 +2,7 @@
   "name": "@pactsafe/pactsafe-angular-sdk",
   "version": "0.1.2",
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "build": "gulp build",
     "build:watch": "gulp",
     "docs": "npm run docs:build",
@@ -9,7 +10,11 @@
     "docs:serve": "npm run docs:build -- -s",
     "docs:watch": "npm run docs:build -- -s -w",
     "lint": "tslint --type-check --project tsconfig.json src/**/*.ts",
-    "test": "tsc && karma start"
+    "test": "tsc && karma start",
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --async"
+  },
+  "resolutions": {
+    "graceful-fs": "^4.2.4"
   },
   "repository": {
     "type": "git",
@@ -27,16 +32,17 @@
     "url": "https://github.com/pactsafe/pactsafe-angular-sdk/issues"
   },
   "devDependencies": {
-    "@angular/common": "^4.0.0",
-    "@angular/compiler": "^4.0.0",
-    "@angular/compiler-cli": "^4.0.0",
-    "@angular/core": "^4.0.0",
-    "@angular/platform-browser": "^4.0.0",
-    "@angular/platform-browser-dynamic": "^4.0.0",
+    "@angular-devkit/build-angular": "~0.901.15",
+    "@angular/common": "^9.1.13",
+    "@angular/compiler": "^9.1.13",
+    "@angular/compiler-cli": "^9.1.13",
+    "@angular/core": "^9.1.13",
+    "@angular/platform-browser": "^9.1.13",
+    "@angular/platform-browser-dynamic": "^9.1.13",
     "@compodoc/compodoc": "^1.0.0-beta.7",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
-    "codelyzer": "~2.0.0",
+    "codelyzer": "^5.0.1",
     "core-js": "^2.4.1",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
@@ -56,13 +62,18 @@
     "protractor": "~5.1.0",
     "rollup": "^0.41.6",
     "run-sequence": "^1.2.2",
-    "rxjs": "^5.1.0",
+    "rxjs": "^6.6.7",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
-    "typescript": "~2.2.0",
-    "zone.js": "^0.8.4"
+    "typescript": "~3.8.3",
+    "zone.js": "~0.10.3"
   },
   "engines": {
     "node": ">=6.0.0"
+  },
+  "dependencies": {
+    "@angular/cli": "^9.1.15",
+    "rxjs-compat": "^6.6.7",
+    "tslib": "^1.9.0"
   }
 }

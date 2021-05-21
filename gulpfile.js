@@ -8,6 +8,9 @@ var gulp = require('gulp'),
   runSequence = require('run-sequence'),
   inlineResources = require('./tools/gulp/inline-resources');
 
+// Import `compiler-cli` for the side-effect of setting up the internal `FileSystem`.
+require('@angular/compiler-cli');
+
 const rootFolder = path.join(__dirname);
 const srcFolder = path.join(rootFolder, 'src');
 const tmpFolder = path.join(rootFolder, '.tmp');
@@ -51,16 +54,14 @@ gulp.task('inline-resources', function () {
  *    compiled modules to the /build folder.
  */
 gulp.task('ngc', function () {
-  return ngc({
-    project: `${tmpFolder}/tsconfig.es5.json`
-  })
-    .then((exitCode) => {
-      if (exitCode === 1) {
-        // This error is caught in the 'compile' task by the runSequence method callback
-        // so that when ngc fails to compile, the whole compile process stops running
-        throw new Error('ngc compilation failed');
-      }
-    });
+  var exitCode = ngc([
+    '--project', `${tmpFolder}/tsconfig.es5.json`
+  ]);
+  if (exitCode === 1) {
+    // This error is caught in the 'compile' task by the runSequence method callback
+    // so that when ngc fails to compile, the whole compile process stops running
+    throw new Error('ngc compilation failed');
+  }
 });
 
 /**
@@ -74,7 +75,7 @@ gulp.task('rollup:fesm', function () {
 
       // Bundle's entry point
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#entry
-      entry: `${buildFolder}/index.js`,
+      input: `${buildFolder}/index.js`,
 
       // Allow mixing of hypothetical and actual files. "Actual" files can be files
       // accessed by Rollup or produced by plugins further down the chain.
@@ -91,7 +92,9 @@ gulp.task('rollup:fesm', function () {
 
       // Format of generated bundle
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#format
-      format: 'es'
+      output: {
+        format: 'es'
+      }
     }))
     .pipe(gulp.dest(distFolder));
 });
@@ -107,7 +110,7 @@ gulp.task('rollup:umd', function () {
 
       // Bundle's entry point
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#entry
-      entry: `${buildFolder}/index.js`,
+      input: `${buildFolder}/index.js`,
 
       // Allow mixing of hypothetical and actual files. "Actual" files can be files
       // accessed by Rollup or produced by plugins further down the chain.
@@ -124,7 +127,9 @@ gulp.task('rollup:umd', function () {
 
       // Format of generated bundle
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#format
-      format: 'umd',
+      output: {
+        format: 'umd'
+      },
 
       // Export mode to use
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#exports
